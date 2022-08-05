@@ -28,7 +28,7 @@ func main() {
 	if out == "" {
 		h := md5.New()
 		_, _ = io.WriteString(h, s.Text)
-		out = fmt.Sprintf("%s-%s-%x.wav", s.Voice, s.Emotion, h.Sum(nil)[:4])
+		out = fmt.Sprintf("%s-%s-%x.ogg", s.Voice, s.Emotion, h.Sum(nil)[:4])
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
