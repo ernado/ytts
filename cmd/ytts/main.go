@@ -9,12 +9,12 @@ import (
 	"os"
 	"time"
 
-	"speech/speechkit"
+	"github.com/ernado/ytts"
 )
 
 func main() {
 	var (
-		s   speechkit.Options
+		s   ytts.Options
 		out string
 	)
 	flag.StringVar(&s.Text, "text", "Привет, мир!", "text to synthesize")
@@ -34,8 +34,8 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	body, err := speechkit.New(os.Getenv("YANDEX_TOKEN"),
-		speechkit.WithFolderID(os.Getenv("YANDEX_FOLDER_ID")),
+	body, err := ytts.New(os.Getenv("YANDEX_TOKEN"),
+		ytts.WithFolderID(os.Getenv("YANDEX_FOLDER_ID")),
 	).Synthesize(ctx, s)
 	if err != nil {
 		panic(err)

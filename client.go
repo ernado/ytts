@@ -1,4 +1,4 @@
-package speechkit
+package ytts
 
 import (
 	"context"
